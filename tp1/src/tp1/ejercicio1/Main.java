@@ -4,7 +4,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("Hola");
+		int uno = 14;
+		int dos = 10;
+		//Impresor.detalleConFor(uno, dos);
+		//Impresor.detalleConWhile(uno, dos);
+		Impresor.detalleDuro(uno, dos);
 	}
 
 }
