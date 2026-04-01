@@ -1,4 +1,4 @@
-package tp1.ejercicio1;
+package ejercicio1;
 
 public class Impresor {
 	
