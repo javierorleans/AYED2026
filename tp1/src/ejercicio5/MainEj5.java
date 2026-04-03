@@ -23,3 +23,24 @@ public class MainEj5 {
 		Revisor.maxMinIncisoC();
 	}
 }
+	
+	/*Sugerido por chatgpt
+	public static void main(String[] args) {
+
+	    int[] array = {4, 16, 55, 23, 9, 12, 33, 10};
+
+	    // Inciso A
+	    Dato a = incisoA(array);
+	    System.out.println("Inciso A: " + a);
+
+	    // Inciso B
+	    Dato b = new Dato();
+	    incisoB(array, b);
+	    System.out.println("Inciso B: " + b);
+
+	    // Inciso C
+	    cargarDatos(array);
+	    incisoC();
+	    }
+	    */
+
