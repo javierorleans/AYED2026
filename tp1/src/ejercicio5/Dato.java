@@ -3,8 +3,7 @@ package ejercicio5;
 public class Dato {
 	private int min;
 	private int max;
-	private double prom;
-	//private int contador;
+	private double prom;	
 
 	public Dato() {
 		min = Integer.MAX_VALUE;

@@ -12,8 +12,14 @@ public class MainEj5 {
 
 		Dato infoB = new Dato();
 		for (int num: arrayNum) {
-			Revisor.maxMinIncisoB(infoB, num);
+			Revisor.maxMinIncisoB(infoB, num, arrayNum.length);
 		}
 		System.out.println("Por inciso B: " + infoB.toString());
+		
+		Revisor.resetCont();
+		
+		Revisor.cargaArray(arrayNum);
+		
+		Revisor.maxMinIncisoC();
 	}
 }
