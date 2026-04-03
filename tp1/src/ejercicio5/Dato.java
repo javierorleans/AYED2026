@@ -4,11 +4,13 @@ public class Dato {
 	private int min;
 	private int max;
 	private double prom;
+	//private int contador;
 
 	public Dato() {
 		min = Integer.MAX_VALUE;
 		max = Integer.MIN_VALUE;
 		prom = 0.0;
+		//contador = 0;
 	}
 
 	public int getMin() {
@@ -34,6 +36,12 @@ public class Dato {
 	public void setProm(double prom) {
 		this.prom = prom;
 	}
+	
+	/*
+	 * public int getContador() { return contador; }
+	 * 
+	 * public void setContador(int contador) { this.contador = contador; }
+	 */
 
 	@Override
 	public String toString() {
