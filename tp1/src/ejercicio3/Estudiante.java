@@ -6,6 +6,19 @@ public class Estudiante {
 	private String comision;
 	private String email;
 	private String direccion;
+	
+	public Estudiante() {}
+		
+	public Estudiante(String nombre, String apellido, String comision, String email, String direccion) {
+		//super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.comision = comision;
+		this.email = email;
+		this.direccion = direccion;
+	}
+
+
 
 	public String getNombre() {
 		return nombre;
