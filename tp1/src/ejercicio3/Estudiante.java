@@ -67,4 +67,22 @@ public class Estudiante {
 				+ "Email: " + getEmail() + '\n'
 				+ "Dirección: " + getDireccion() + '\n';
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean result = false;
+		if ((obj != null) && (obj instanceof Estudiante)) {
+			Estudiante nuevo = (Estudiante) obj;
+			if (nuevo.getApellido() == this.getApellido()
+				&& nuevo.getComision() == this.getComision()
+				&& nuevo.getDireccion() == this.getDireccion()
+				&& nuevo.getEmail() == this.getEmail()
+				&& nuevo.getNombre() == this.getNombre()) {
+				result = true;
+			}
+		}					
+		return result;
+	}
+	
+	
 }

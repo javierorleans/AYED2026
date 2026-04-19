@@ -1,6 +1,7 @@
 package ejercicio7;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,12 +18,18 @@ public class TestArrayList {
 		respuesta = s.nextLine();
 		switch (respuesta) {
 			case "a", "b", "c" -> metodosIncABC();
-			case "d", "e" -> metodosIncDE(respuesta);				
+			case "d", "e" -> metodosIncDE(respuesta);	
+			case "f" -> metodoIncF();
+			case "g" -> metodoIncG();
+			case "h" -> metodoIncH();
+			case "i" -> metodoIncI();
+			case "j" -> metodoIncJ();
 			default -> System.out.println("Error...");			
 		}
 					
 	//System.out.println("Ya salí");
 		
+		s.close();
 	}
 	
 	private static void metodosIncABC() {
@@ -85,12 +92,13 @@ public class TestArrayList {
 		System.out.println("Lista copia: ");
 		imprimirLista(lista2);
 		
-		// cambio dato en copia
-		for(Estudiante e: lista2) {
-			e.setNombre("Maaaaaaaariiii");
-		}
+		
 		
 		if (resp.equals("d")) {
+			// cambio dato en copia		
+			for(Estudiante e: lista2) {
+				e.setNombre("Maaaaaaaariiii");
+			}
 			System.out.println("Nombres cambiados en lista2... ver si se cambió lista1:");
 			System.out.println("Lista original: ");
 			imprimirLista(lista1);
@@ -138,7 +146,73 @@ public class TestArrayList {
 		 * 	List<Persona> copia = original.stream().map(p -> new Persona(p)).toList();		 * 
 		 * */
 		
+		if(resp.equals("e")) {
+			
+			boolean existe = false;
+			//Estudiante nuevo = new Estudiante("Lemmy", "Kilmister", "666ABC", "lemmydeath@gmail.com", "overkill 321");
+			Estudiante nuevo = new Estudiante("Mariana", "Girardell", "12", "mariaaaaana@gmail.com", "69 601");
+			for(Estudiante e: lista1) {
+				if ((e.equals(nuevo)) && (!existe)) {
+					existe= true;
+				}
+			}
+			if(!existe) {
+				lista1.add(nuevo);
+				System.out.println("-----------Estudiante agregado al final ");
+				imprimirLista(lista1);
+			}else {
+				System.out.println("El estudiante ya existe....");
+			}
+			
+		}
 		
+	}
+	
+	public static void metodoIncF() {
+		ArrayList<Integer> secuencia = new ArrayList<>(List.of(2, 5, 3, 7, 4, 7, 3, 5, 12));
+		System.out.println("Secuencia de números:");
+		imprimirSecuenciaInt(secuencia);
+		// Borrar despues
+		secuencia.add(2, 2222);
+		imprimirSecuenciaInt(secuencia);
+		
+		boolean esCapi = esCapicua(secuencia);
+		if(esCapi) {
+			System.out.println("Es capicua.");
+		}else {
+			System.out.println("NO es capicua...");
+		}
+	}
+	
+	public static void metodoIncG() {
+		List<Integer> suce = new ArrayList<>();
+		suce = EjercicioSucesion.calcularSucesion(6);
+		imprimirSecuenciaInt(suce);	
+	}
+	
+	public static void metodoIncH() {
+		List<Integer> unaLista = new ArrayList<>(Arrays.asList(3, 24, 43, 5, 12, 10, 1121));
+		System.out.println("Lista original: ");
+		imprimirSecuenciaInt(unaLista);
+		invertirArrayList(unaLista);
+		System.out.println("Lista Modificada: ");
+		imprimirSecuenciaInt(unaLista);		
+	}
+	
+	public static void metodoIncI() {
+		List<Integer> unaLista = new LinkedList<>(List.of(3, 24, 43, 5, 12, 10, 1121));
+		System.out.println("Lista a sumar: ");
+		int suma = sumarLinkedList(unaLista);
+		System.out.println("Suma = " + suma);
+	}
+	
+	public static void metodoIncJ() {
+		ArrayList<Integer> lista1 = new ArrayList<>(Arrays.asList(1,4,55,66,89,101));
+		ArrayList<Integer> lista2 = new ArrayList<>(Arrays.asList(3,24,43,969));
+		ArrayList<Integer> combinada = new ArrayList<>();
+		combinada = combinarOrdenado(lista1, lista2);
+		System.out.println("Lista combinada: ");
+		imprimirSecuenciaInt(combinada);
 	}
 	
 	public static void imprimirLista(List<Estudiante> estu) {
@@ -147,5 +221,114 @@ public class TestArrayList {
 			System.out.println("--------------");
 		}
 	}
+	
+	public static void imprimirSecuenciaInt(List<Integer> lista) {
+		for (Integer num : lista) { 
+			System.out.print(num + " ");
+		}
+		System.out.println();
+	}
+	
+	public static boolean esCapicua(ArrayList<Integer> lista) {
+		//NOTA: deberia hacer una copia del array ya que lo voy a modificar
+		boolean sigue = true;
+		while ((lista.size() > 1) && (sigue)) {
+			//Comparo primer elemento con el último
+			if(lista.get(0) != (lista.get(lista.size() - 1))) {
+				//si son distintos, no es capicua
+				sigue = false; 
+			}else{
+				//si sigue siendo capicua, acorto la lista para seguir revisando
+				lista.remove(0);
+				lista.remove(lista.size() - 1);
+			}
+		}
+		return sigue;
+	}
+	
+	public static void invertirArrayList(List<Integer> unaLista) {
+		if(unaLista.size() != 0) {
+			Integer aux = unaLista.getFirst();
+			unaLista.removeFirst();
+			invertirArrayList(unaLista);
+			unaLista.add(aux);
+		}
+	}
+	
+	public static int sumarLinkedList(List<Integer> unaLista) {
+		if(unaLista.size() == 0) {
+			return 0;
+		} else {
+			int aux = unaLista.getFirst();
+			unaLista.removeFirst();
+			aux += sumarLinkedList(unaLista);
+			return aux;
+		}		
+	}
 
+	public static ArrayList<Integer> combinarOrdenado(ArrayList<Integer> lista1, ArrayList<Integer> lista2) {
+		ArrayList<Integer> combinada = new ArrayList<>();
+		while (!lista1.isEmpty() || !lista2.isEmpty()) {
+			if (!lista1.isEmpty()) {
+				if (!lista2.isEmpty()) {
+					// Si llego acá es que las dos listas tienen elementos
+					if (lista1.get(0) < lista2.get(0)) {
+						// el primer elemento de la lista 1 es el mas pequeño
+						combinada.add(lista1.get(0));
+						lista1.removeFirst();
+					} else {
+						// el primer elemento de la lista 2 es el mas pequeño
+						combinada.add(lista2.get(0));
+						lista2.removeFirst();
+					}
+				} else {
+					// La lista 2 está vacia, por lo que ya guardamos el elemento de la lista 1
+					combinada.add(lista1.get(0));
+					lista1.removeFirst();
+				}
+			} else {
+				// La lista 1 está vacia, por lo que ya guardamos el elemento de la lista 2
+				combinada.add(lista2.get(0));
+				lista2.removeFirst();
+			}
+
+		}
+		return combinada;
+	}
+	
+	
+	/* optimizado por CHATGPT: utiliza indices porque removeFirst no es óptimo, debe mover 
+	 * todo el resto de elementos.
+	 * 
+	 * public static ArrayList<Integer> combinarOrdenado(ArrayList<Integer> lista1, ArrayList<Integer> lista2) {
+    ArrayList<Integer> combinada = new ArrayList<>(lista1.size() + lista2.size());
+
+    int i = 0, j = 0;
+
+    while (i < lista1.size() && j < lista2.size()) {
+        if (lista1.get(i) < lista2.get(j)) {
+            combinada.add(lista1.get(i));
+            i++;
+        } else {
+            combinada.add(lista2.get(j));
+            j++;
+        }
+    }
+
+	// Agregar lo que sobra
+	
+    while (i < lista1.size()) {
+        combinada.add(lista1.get(i));
+        i++;
+    }
+
+    while (j < lista2.size()) {
+        combinada.add(lista2.get(j));
+        j++;
+    }
+
+    return combinada;
+}
+	 * 
+	 * */
 }
