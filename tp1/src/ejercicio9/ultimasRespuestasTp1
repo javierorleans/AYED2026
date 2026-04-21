@@ -1,0 +1,9 @@
+Para los últimos dos puntos:
+
+10) Para cola con prioridad en un banco utilizaría DoubleEndedQueue con su método enqueueFirst(T dato) 
+	ya que permite encolar al principio.
+	
+11) Hay dos formas de verlo
+	1) Si el chofer recorre todas las paradas y al final del día tiene que informar si las hizo todas, uso el Queue
+	2) Si hay que informar al chofer qué paradas le toca hacer, encolo toda la informacion usando CircularQueue y voy trayendo la info
+	   de la parada que corresponde, haciendo circular la cola con el método shift().
