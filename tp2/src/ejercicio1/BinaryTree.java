@@ -59,11 +59,16 @@ public class BinaryTree<T> {
 	public boolean isEmpty() {
 		return (this.isLeaf() && this.getData() == null);
 	}
-
+	
+	/**
+	 * Devuelve True si es una hoja
+	 * @return
+	 */
 	public boolean isLeaf() {
 		return (!this.hasLeftChild() && !this.hasRightChild());
 	}
 
+	
 	public boolean hasLeftChild() {
 		return this.leftChild != null;
 	}
@@ -78,8 +83,11 @@ public class BinaryTree<T> {
 	}
 
 	public int contarHojas() {
-
-		return 0;
+		int total= 0;
+		if(!this.isEmpty()) {
+			total= contarHojas_private(this);
+		}
+		return total;
 	}
 
 	public BinaryTree<T> espejo() {
@@ -90,6 +98,21 @@ public class BinaryTree<T> {
 	// 0<=n<=m
 	public void entreNiveles(int n, int m) {
 
+	}
+	
+	private int contarHojas_private(BinaryTree<T> arbol) {
+		int suma = 0;
+		if(arbol.isLeaf()) {
+			suma = 1;
+		}else {
+			if(arbol.hasLeftChild()) {
+				suma += contarHojas_private(arbol.getLeftChild());
+			}
+			if(arbol.hasRightChild()) {
+				suma += contarHojas_private(arbol.getRightChild());
+			}
+		}		
+		return suma;
 	}
 
 }
