@@ -16,6 +16,16 @@ public class MainTp2Ej2 {
 		ab.addLeftChild(hijoIzquierdo);
 		ab.addRightChild(hijoDerecho);		
         System.out.println("Cantidad de hojas: " + ab.contarHojas());
+        System.out.println("Impresion preorden:");
+        ab.printPreorden();
+        System.out.println("Impresion inorden:");
+        ab.printInorden();
+        System.out.println("Impresion postorden:");
+        ab.printPostorden();
+        System.out.println("Impresion entre niveles TOTAL:");
+        ab.printLevelTraversal();
+        System.out.println("Impresion entre niveles ACOTADO:");
+        ab.entreNiveles(1, 2);
 	}
 
 }
