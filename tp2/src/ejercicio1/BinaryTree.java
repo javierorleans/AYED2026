@@ -176,8 +176,17 @@ public class BinaryTree<T> {
 	}
 
 	public BinaryTree<T> espejo() {
-
-		return null;
+		if (this.isEmpty()) return new BinaryTree<T>();
+		
+		BinaryTree<T> nuevo = new BinaryTree<T>(this.getData());
+		if(this.hasLeftChild()) {
+			nuevo.addRightChild(this.getLeftChild().espejo());
+		}
+		if(this.hasRightChild()) {
+			nuevo.addLeftChild(this.getRightChild().espejo());
+		}
+		
+		return nuevo;
 	}
 
 	private int contarHojas_private(BinaryTree<T> arbol) {

@@ -24,8 +24,12 @@ public class MainTp2Ej2 {
         ab.printPostorden();
         System.out.println("Impresion entre niveles TOTAL:");
         ab.printLevelTraversal();
-        System.out.println("Impresion entre niveles ACOTADO:");
-        ab.entreNiveles(1, 2);
+        /*System.out.println("Impresion entre niveles ACOTADO:");
+        ab.entreNiveles(1, 2);*/
+        System.out.println("Impresion entre niveles En espejo:");
+        BinaryTree<Integer> acc = ab.espejo();
+        acc.printLevelTraversal();
+        
 	}
 
 }
