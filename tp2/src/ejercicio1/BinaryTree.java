@@ -84,7 +84,7 @@ public class BinaryTree<T> {
 
 	// --- BLOQUE DE IMPRESIÓN DE ÁRBOLES
 	public void printPreorden() {
-		System.out.println(this.getData());
+		System.out.print(this.getData() + " | ");
 		if (this.hasLeftChild()) {
 			this.getLeftChild().printPreorden();
 		}
